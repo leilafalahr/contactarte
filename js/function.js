@@ -1,11 +1,18 @@
-const signUpButton = document.getElementById('registrarse');
-const signInButton = document.getElementById('iniciar sesion');
-const container = document.getElementById('container');
+$(document).ready(function() {
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
-});
+    //On click signup, hide login and show registration form
+    $(".registrate").click(function() {
+        $(".contenedor-tabla-1").slideUp("slow", function(){
+            $(".contenedor-tabla-2").slideDown("slow");
+        });
+    });
 
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
+    //On click signup, hide registration and show login form
+    $(".inicia").click(function() {
+        $(".contenedor-tabla-2").slideUp("slow", function(){
+            $(".contenedor-tabla-1").slideDown("slow");
+        });
+    });
+
+
 });

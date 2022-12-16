@@ -1,5 +1,6 @@
 <?php
 require 'config/configBD.php';
+$error_array=array();
 
 if (isset($_POST['registrar'])) {
 
@@ -28,16 +29,33 @@ if (isset($_POST['registrar'])) {
             $tipo_de_usuario = 1;
         }
     }
-    //Verificar que el email esta en formato correcto
+
+    //Verificar que el correo ya está en uso
+    $emailExiste = mysqli_query($con, "SELECT email from usuarios WHERE email='$email'");
+    $checkEmail = mysqli_num_rows($emailExiste);
+
+    if($checkEmail > 0) {
+        array_push($error_array,"El correo electrónico ya está en uso.");
+    }
+    //Verificar que el username ya está en uso
+    $usernameExiste = mysqli_query($con, "SELECT username from usuarios WHERE username='$username'");
+    $checkUsername = mysqli_num_rows($usernameExiste);
+
+    if($checkUsername > 0) {
+        array_push($error_array,"El username ya está en uso.");
+    }
 
     //Verificar que las contraseñas están correctas
-
+    if($password != $password2){
+        array_push($error_array, "Las contraseñas no coinciden.");
+    }
     //Verificar que la contraseña tiene entre 30 y 5 caracteres
 
     //encriptar contraseña antes de enviarla a la BD
-    $password = md5($password);
-
-    //mandar los datos a la BD
+    if(empty($error_array)) {
+        $password = md5($password); //Encrypt password before sending to database
+    }
+        //mandar los datos a la BD
     $query = mysqli_query($con, "INSERT INTO usuarios (id,nombre,apellido,username,email,password,tipo_de_usuario) VALUES (null, '$nombre', '$apellido', '$username', '$email', '$password', '$tipo_de_usuario')");
 
     //Limpiar las variables de sesión

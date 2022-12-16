@@ -1,24 +1,46 @@
-body{
-    padding: 50px;
-    background: #c1bdba;
-    width:70%;
+@import url('https://fonts.cdnfonts.com/css/aileron');
 
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-img{
-    width: 20%;
+body {
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+.contenedor-total{
+    background-color: #A6A6A6;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    display: block;
+}
+
+.tabla1{
+   margin: 0 auto;
+}
+
+.tabla2{
+    margin: 0 auto;
+}
 
 .form   {
     position: relative;
     z-index: 1;
-    background:#D2C2B0;
+    background: #D2C2B0;
     max-width: 360px;
-    margin: 0 auto 100px;
+    margin: 0 auto 10px;
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.sincuenta{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background: #D2C2B0;
+    padding: 15px;
+
 }
 .form input {
     outline: 0;
@@ -30,16 +52,39 @@ img{
     box-sizing: border-box;
     font-size: 14px;
 }
-submit {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: #4CAF50;
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
 
-    cursor: pointer;
+.error{
+    color: whitesmoke;
 }
+
+
+/*index.php estilo*/
+
+.header {
+    overflow: hidden;
+    background-color: #A6A6A6;
+    height: auto;
+}
+.header .enlace-header {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.header .enlace-header:hover {
+    background-color: #ddd;
+    color: black;
+}
+.imagen-peq{
+    margin-top: 5px;
+}
+
+i{
+    margin-top: 10px;
+    font-family: 'Aileron 300', sans-serif;
+}
+
+
