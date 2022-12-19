@@ -88,7 +88,7 @@ i{
     font-family: 'Aileron 300', sans-serif;
 }
 
-/*estilo perfil.php*/
+/*estilo perfil artista*/
 .contenedor-perfil{
     height: 50%;
     width: 25%;
@@ -104,3 +104,15 @@ i{
     height: 200px;
     margin-top: 10px;
 }
+.contenedor-contenido{
+    margin-top: 10px;
+    height:max-content;
+    width: 70%;
+    float: right;
+}
+.obras-publicadas{
+    background-color: whitesmoke;
+}
+
+/*estilo perfil reclutador*/
+

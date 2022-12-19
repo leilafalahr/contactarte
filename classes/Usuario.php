@@ -5,11 +5,11 @@ namespace classes;
 class Usuario
 {
     private $usuario;
-    private $conexion;
+    private $con;
 
     public function __construct($conexion,$usuario)
     {
-        $this->conexion = $conexion;
+        $this->con = $conexion;
         $detalles_usuario_query = mysqli_query($conexion, "SELECT * FROM usuarios WHERE username='$usuario'");
         $this->usuario = mysqli_fetch_array($detalles_usuario_query);
     }
