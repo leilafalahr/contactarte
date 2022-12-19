@@ -69,7 +69,10 @@ require 'handlers/iniciosesionhandler.php';
                         <div class="form">
                             <?php
                             //mostrar errores
-                            if(in_array("El email o la contraseña son incorrectos", $error_array)) echo  "<p class='error'>El email o la contraseña son incorrectos</p>";
+                            if(in_array("El correo electrónico ya está en uso.", $error_array)) echo  "<p class='error'>El correo electrónico ya está en uso.</p>";
+                            if(in_array("El username ya está en uso.", $error_array)) echo  "<p class='error'>El username ya está en uso.</p>";
+                            if(in_array("Las contraseñas no coinciden.", $error_array)) echo  "<p class='error'>Las contraseñas no coinciden.</p>";
+                            if(in_array("Las contraseñas no coinciden.", $error_array)) echo  "<p class='error'>La contraseña tiene que tener entre 20 y 5 caracteres.</p>";
                             ?>
                             <form method="post" action="registro.php" class="register-form">
                                 <input type="text" name="nombre" placeholder="Nombre" value="<?php
@@ -107,7 +110,7 @@ require 'handlers/iniciosesionhandler.php';
                                 <label for="Artista">Artista</label>
                                 <input type="radio" name="tipoUsuario" value="reclutador">
                                 <label for="reclutador">Reclutador</label>
-                                <input type="submit" name="registrar" value="iniciar sesion">
+                                <input type="submit" name="registrar" value="Registrarse">
                             </form>
                         </div>
                         <div class="sincuenta">

@@ -49,14 +49,22 @@ if (isset($_POST['registrar'])) {
     if($password != $password2){
         array_push($error_array, "Las contraseñas no coinciden.");
     }
-    //Verificar que la contraseña tiene entre 30 y 5 caracteres
-
+    //Verificar que la contraseña tiene entre 20 y 5 caracteres
+    if(strlen($password)>20 OR strlen($password<5)){
+        array_push($error_array, "La contraseña tiene que tener entre 20 y 5 caracteres.");
+    }
     //encriptar contraseña antes de enviarla a la BD
     if(empty($error_array)) {
-        $password = md5($password); //Encrypt password before sending to database
-    }
+        $password = md5($password);
         //mandar los datos a la BD
-    $query = mysqli_query($con, "INSERT INTO usuarios (id,nombre,apellido,username,email,password,tipo_de_usuario) VALUES (null, '$nombre', '$apellido', '$username', '$email', '$password', '$tipo_de_usuario')");
+        $query = mysqli_query($con, "INSERT INTO usuarios (nombre,apellido,username,email,password,tipo_de_usuario) VALUES ('$nombre', '$apellido', '$username', '$email', '$password', '$tipo_de_usuario')");
+
+        if($tipo_de_usuario==0){
+            mysqli_query($con,"INSERT INTO artistas(username) VALUES ('$username')");
+        }else{
+            mysqli_query($con,"INSERT INTO reclutadores(username) VALUES ('$username')");
+        }
+    }
 
     //Limpiar las variables de sesión
     $_SESSION['nombre'] = "";
@@ -64,4 +72,5 @@ if (isset($_POST['registrar'])) {
     $_SESSION['username'] = "";
     $_SESSION['email'] = "";
     $_SESSION['password'] = "";
+
 }//registrar
