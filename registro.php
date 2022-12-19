@@ -39,7 +39,7 @@ require 'handlers/iniciosesionhandler.php';
         <div class="contenedor-tabla-1">
         <table class="tabla1">
             <tr>
-                <td><img src="images/logo_contactarte.png" alt=""></td>
+                <td><img src="images/imagenes_logo/logo_contactarte.png" alt=""></td>
                 <td>
                     <?php
                     //mostrar errores
@@ -119,7 +119,7 @@ require 'handlers/iniciosesionhandler.php';
                             </center>
                         </div>
                     </div></td>
-                <td><img src="images/logo_contactarte.png" alt=""></td>
+                <td><img src="images/imagenes_logo/logo_contactarte.png" alt=""></td>
             </tr>
         </table>
         </div> <!--contenedor tabla 2-->

@@ -2,7 +2,16 @@
 require 'config/configBD.php';
 
 if (isset($_SESSION['username'])){
-    $userLoggeado = $_SESSION['username'];
+    $usuario_loggeado = $_SESSION['username'];
+
+    $usuario_detalles = mysqli_query($con,"SELECT * FROM usuarios WHERE username='$usuario_loggeado'");
+    $usuario = mysqli_fetch_array($usuario_detalles);
+
+    $artista_detalles = mysqli_query($con, "SELECT * FROM artistas WHERE username='$usuario_loggeado'");
+    $artista = mysqli_fetch_array($artista_detalles);
+
+    $reclutador_detalles = mysqli_query($con, "SELECT * FROM reclutadores WHERE username='$usuario_loggeado'");
+    $reclutador = mysqli_fetch_array($reclutador_detalles);
 }else{
     header('Location: registro.php');
 }
@@ -23,12 +32,11 @@ if (isset($_SESSION['username'])){
 </head>
 <body>
 <div class="header"><!--header-->
-    <a href="index.php"><img src="images/logo_contactarte_peq2.png" alt="" class="imagen-peq"></a>
+    <a href="index.php"><img src="images/imagenes_logo/logo_contactarte_peq2.png" alt="" class="imagen-peq"></a>
     <a href="perfil.php" class="enlace-header" ><i class='fas fa-user-alt'style='color:black;font-size:20px'>  Mi perfil</i>
     </a>
     <a href="#" class="enlace-header"><i class='fas fa-comment-alt' style='color:black;font-size:20px'></i>
     </a>
     <a href="handlers/logout.php" class="enlace-header"><i class='fa fa-gear' style='color:black;font-size:20px'></i>
     </a>
-
 </div> <!--header-->
