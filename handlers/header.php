@@ -28,9 +28,12 @@ if (isset($_SESSION['username'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>contact(arte)</title>
     <link rel="stylesheet" href="style/style.css">
+    <!--fontawesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <!--script js-->
+    <script src="../js/uploadImage.js"></script>
 
 </head>
 <body>

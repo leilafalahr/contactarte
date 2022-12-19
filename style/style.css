@@ -85,25 +85,26 @@ body {
 
 i{
     margin-top: 10px;
-    font-family: 'Aileron 300', sans-serif;
+
 }
 
 /*estilo perfil artista*/
 .contenedor-perfil{
-    height: 50%;
-    width: 25%;
+    height: 40%;
+    width: 20%;
     position: absolute;
     margin-top: 10px;
     background-color: #D2C2B0;
     text-align: center;
-
-
+    display: block;
 }
-.imagen-perfil{
-    width: 200px;
-    height: 200px;
-    margin-top: 10px;
+.imagen-perfil {
+    width: 50%;
+    height: 50%;
+    margin-top: 20px;
+    display: inline;
 }
+
 .contenedor-contenido{
     margin-top: 10px;
     height:max-content;
@@ -113,6 +114,52 @@ i{
 .obras-publicadas{
     background-color: whitesmoke;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.publicar-header{
+    padding: .2em .5em;
+    background-color: #eaeaea;
+    color: #3f5563;
+}
+.publicar-titulo {
+    font-size: 18px;
+}
+
+.publicar-textarea {
+    width: 100%;
+    height: 100%;
+    padding: .5em;
+    border: none;
+    resize: none;
+}
+
+.descripcion:focus {
+    outline: none;
+}
+
+/*botones*/
+
+.boton-publicar{
+    padding: .5em 1em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 120px;
+    background-color: #D2C2B0;
+    color: #FFFFFF;
+    border-radius: 1.5em;
+}
+
+.primero{
+    float: left;
+}
+.final{
+    float: right;
+}
+
 
 /*estilo perfil reclutador*/
 
