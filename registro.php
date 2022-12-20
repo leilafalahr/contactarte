@@ -1,6 +1,6 @@
 <?php
-require 'handlers/registrohandler.php';
-require 'handlers/iniciosesionhandler.php';
+require 'app/handlers/registrohandler.php';
+require 'app/handlers/iniciosesionhandler.php';
 ?>
 
 <!doctype html>
@@ -12,8 +12,8 @@ require 'handlers/iniciosesionhandler.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contactarte</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="js/function.js"></script>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="web/js/function.js"></script>
+    <link rel="stylesheet" type="text/css" href="web/css/style.css">
     <?php
 
     if(isset($_POST['registrar'])) {
@@ -39,7 +39,7 @@ require 'handlers/iniciosesionhandler.php';
         <div class="contenedor-tabla-1">
         <table class="tabla1">
             <tr>
-                <td><img src="images/imagenes_logo/logo_contactarte.png" alt=""></td>
+                <td><img src="web/img/imagenes_logo/logo_contactarte.png" alt=""></td>
                 <td>
                     <?php
                     //mostrar errores
@@ -119,7 +119,7 @@ require 'handlers/iniciosesionhandler.php';
                             </center>
                         </div>
                     </div></td>
-                <td><img src="images/imagenes_logo/logo_contactarte.png" alt=""></td>
+                <td><img src="web/img/imagenes_logo/logo_contactarte.png" alt=""></td>
             </tr>
         </table>
         </div> <!--contenedor tabla 2-->

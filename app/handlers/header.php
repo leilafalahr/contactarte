@@ -1,6 +1,5 @@
 <?php
-require 'config/configBD.php';
-
+require 'app/config/configBD.php';
 if (isset($_SESSION['username'])){
     $usuario_loggeado = $_SESSION['username'];
 
@@ -32,8 +31,10 @@ if (isset($_SESSION['username'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-    <!--script js-->
-    <script src="../js/uploadImage.js"></script>
+    <!--script js / ajax-->
+    <script src="../../web/js/uploadImage.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </head>
 <body>
@@ -42,10 +43,10 @@ if (isset($_SESSION['username'])){
     <?php
 
     if ($consultaCheckArtista == 1){
-        echo " <a href='perfil.php' class='enlace-header' ><i class='fas fa-user-alt'style='color:black;font-size:20px'>  Mi perfil</i>
+        echo " <a href='perfil.php' class='enlace-header' ><i class='fas fa-user-alt'css='color:black;font-size:20px'>  Mi perfil</i>
     </a>";
     }else{
-        echo "<a href='perfilR.php' class='enlace-header' ><i class='fas fa-user-alt'style='color:black;font-size:20px'>  Mi perfil</i>
+        echo "<a href='perfilR.php' class='enlace-header' ><i class='fas fa-user-alt'css='color:black;font-size:20px'>  Mi perfil</i>
     </a>";
     }
     ?>

@@ -1,5 +1,5 @@
 <?php
-require 'config/configBD.php';
+require 'app/config/configBD.php';
 
 if (isset($_POST['iniciarsesion'])){
 $emailLog = filter_var($_POST['emailLog'],FILTER_SANITIZE_EMAIL);
