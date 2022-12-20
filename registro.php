@@ -1,6 +1,6 @@
 <?php
-require 'handlers/registrohandler.php';
-require 'handlers/iniciosesionhandler.php';
+require 'handlers/register.php';
+require 'handlers/login.php';
 ?>
 
 <!doctype html>
@@ -12,34 +12,15 @@ require 'handlers/iniciosesionhandler.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contactarte</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="js/function.js"></script>
+    <script src="assets/js/function.js"></script>
     <link rel="stylesheet" type="text/css" href="style/style.css">
-    <?php
-
-    if(isset($_POST['registrar'])) {
-        echo '
-		<script>
-
-		$(document).ready(function() {
-			$("#first").hide();
-			$("#second").show();
-		});
-
-		</script>
-
-		';
-    }
-
-
-    ?>
-
 </head>
 <body>
 <div class="contenedor-total">
         <div class="contenedor-tabla-1">
         <table class="tabla1">
             <tr>
-                <td><img src="images/imagenes_logo/logo_contactarte.png" alt=""></td>
+                <td><img src="assets/img/imagenes_logo/logo_contactarte.png" alt=""></td>
                 <td>
                     <?php
                     //mostrar errores
@@ -119,7 +100,7 @@ require 'handlers/iniciosesionhandler.php';
                             </center>
                         </div>
                     </div></td>
-                <td><img src="images/imagenes_logo/logo_contactarte.png" alt=""></td>
+                <td><img src="assets/img/imagenes_logo/logo_contactarte.png" alt=""></td>
             </tr>
         </table>
         </div> <!--contenedor tabla 2-->

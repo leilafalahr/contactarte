@@ -113,11 +113,11 @@ i{
 }
 .obras-publicadas{
     background-color: whitesmoke;
-}
+    clear: right;
+    margin-top: 5% ;
+    padding: 5%;
+    }
 
-input[type="file"] {
-    display: none;
-}
 
 .publicar-header{
     padding: .2em .5em;
@@ -159,7 +159,6 @@ input[type="file"] {
 .final{
     float: right;
 }
-
 
 /*estilo perfil reclutador*/
 
