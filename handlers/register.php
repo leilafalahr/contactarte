@@ -59,7 +59,7 @@ if (isset($_POST['registrar'])) {
         //mandar los datos a la BD
         $query = mysqli_query($con, "INSERT INTO usuarios (nombre,apellido,username,email,password,tipo_de_usuario) VALUES ('$nombre', '$apellido', '$username', '$email', '$password', '$tipo_de_usuario')");
 
-        $img_perfil = 'img/imagenes_perfil/foto_perfil_por_defecto.png';
+        $img_perfil = 'assets/img/imagenes_perfil/foto_perfil_por_defecto.png';
         if($tipo_de_usuario==0){
             mysqli_query($con,"INSERT INTO artistas(username,imagen_perfil) VALUES ('$username','$img_perfil')");
         }else{

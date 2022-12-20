@@ -26,7 +26,7 @@ if (isset($_SESSION['username'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>contact(arte)</title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!--fontawesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -39,7 +39,7 @@ if (isset($_SESSION['username'])){
 </head>
 <body>
 <div class="header"><!--header-->
-    <a href="index.php"><img src="images/imagenes_logo/logo_contactarte_peq2.png" alt="" class="imagen-peq"></a>
+    <a href="index.php"><img src="assets/img/imagenes_logo/logo_contactarte_peq2.png" alt="" class="imagen-peq"></a>
     <?php
 
     if ($consultaCheckArtista == 1){
