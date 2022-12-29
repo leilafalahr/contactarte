@@ -1,5 +1,6 @@
 <?php
 require 'handlers/header.php';
+require 'handlers/publicarObra.php';
 ?>
 
 <div class="contenedor-perfil">
@@ -17,20 +18,20 @@ require 'handlers/header.php';
                 PUBLICAR
             </h2>
         </div>
-        <form method="post" enctype="multipart/form-data" action="perfil.php">
+        <form method="post" action="perfil.php">
             <div>
-                <textarea name="descripcion" class="publicar-textarea" placeholder="Describe tu obra..."></textarea>
+                <input type="text" class="publicar-textarea" placeholder="Describe tu obra..." name="descripcion">
             </div>
             <div>
                 <div>
-                    <button type="submit" class="boton-publicar final" name="post">publicar</button>
+                    <button type="submit" class="boton-publicar final" name="publicar">publicar</button>
                 </div>
             </div>
         </form>
     </div>
     <div class="contenedor-obras-publicadas">
         <div class="obras-publicadas">
-            <p>hola esto es una prueba de post</p>
+            <p>prueba prueba prueba</p>
         </div>
     </div>
 </div>

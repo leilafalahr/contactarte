@@ -12,10 +12,24 @@ require 'handlers/login.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contactarte</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="assets/js/function.js"></script>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+<script>
+    $(document).ready(function(){
+        $("#contenedor-tabla-2").hide();
+        $("#contenedor-tabla-1").show();
+
+        $("#registra").click(function(){
+            $(".contenedor-tabla-1").hide();
+            $(".contenedor-tabla-2").show();
+        });
+        $("#inicia").click(function(){
+            $(".contenedor-tabla-2").hide();
+            $(".contenedor-tabla-1").show()
+        });
+    });
+</script>
 <div class="contenedor-total">
         <div class="contenedor-tabla-1">
         <table class="tabla1">
@@ -35,7 +49,7 @@ require 'handlers/login.php';
                     </div>
                         <div class="sincuenta">
                             <center><p><h4>¿Todavia no tienes cuenta?</h4></p>
-                            <button class="registrate"">Registrate</button>
+                            <button class="registrate" id="registra">Registrate</button>
                             </center>
                         </div>
                     </div>
@@ -96,7 +110,7 @@ require 'handlers/login.php';
                         </div>
                         <div class="sincuenta">
                             <center><p><h4>¿Ya tienes cuenta?</h4></p>
-                                <button class="inicia"">Inicia sesion</button>
+                                <button class="inicia" id="inicia">Inicia sesion</button>
                             </center>
                         </div>
                     </div></td>

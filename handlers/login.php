@@ -27,7 +27,7 @@ $check_login = mysqli_num_rows($check_bd);
             $usernameReclutador = $filaReclutador['username'];
             $_SESSION['username'] = $usernameReclutador;
 
-            header("Location: indexReclutador.php");
+            header("Location: index.php");
             exit();
         }else{
             //abrir sesion como artista

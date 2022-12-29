@@ -8,11 +8,12 @@
 body {
     margin: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #A6A6A6;
+
 }
 
 /*estilo registro.php*/
 .contenedor-total{
-    background-color: #A6A6A6;
     margin-top: 10px;
     margin-bottom: 10px;
     display: block;
@@ -58,7 +59,9 @@ body {
     color: whitesmoke;
 }
 
+button{
 
+}
 /*header.php estilo*/
 
 .header {
@@ -110,6 +113,12 @@ i{
     height:max-content;
     width: 70%;
     float: right;
+}
+.contenedor-contenido-2{
+    height:max-content;
+    width: 40%;
+    align-content: center;
+    margin: auto;
 }
 .obras-publicadas{
     background-color: whitesmoke;

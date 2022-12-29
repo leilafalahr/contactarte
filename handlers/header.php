@@ -40,17 +40,7 @@ if (isset($_SESSION['username'])){
 <body>
 <div class="header"><!--header-->
     <a href="index.php"><img src="assets/img/imagenes_logo/logo_contactarte_peq2.png" alt="" class="imagen-peq"></a>
-    <?php
-
-    if ($consultaCheckArtista == 1){
-        echo " <a href='perfil.php' class='enlace-header' ><i class='fas fa-user-alt'style='color:black;font-size:20px'>  Mi perfil</i>
-    </a>";
-    }else{
-        echo "<a href='perfilR.php' class='enlace-header' ><i class='fas fa-user-alt'style='color:black;font-size:20px'>  Mi perfil</i>
-    </a>";
-    }
-    ?>
-
+    <a href='perfil.php' class='enlace-header' ><i class='fas fa-users-alt'style='color:black;font-size:20px'>  Mi perfil</i>
     <a href="#" class="enlace-header"><i class='fas fa-comment-alt' style='color:black;font-size:20px'></i>
     </a>
     <a href="handlers/logout.php" class="enlace-header"><i class='fa fa-gear' style='color:black;font-size:20px'></i>
