@@ -1,6 +1,7 @@
 <?php
 require 'handlers/header.php';
 require 'handlers/publicarObra.php';
+require 'handlers/upload.php'
 ?>
 
 <div class="contenedor-perfil">
@@ -9,6 +10,7 @@ require 'handlers/publicarObra.php';
         $username = $artista['username'];
         echo "<h2>@" . $username . "</h2>";
         echo $artista['bio']; ?></p>
+    <button type="button" onclick="">MODIFICAR PERFIL</button>
 </div>
 <div class="contenedor-contenido">
     <div class="publicar-obra">
@@ -18,7 +20,7 @@ require 'handlers/publicarObra.php';
                 PUBLICAR
             </h2>
         </div>
-        <form method="post" action="perfil.php">
+        <form action="perfil.php" method="post" enctype="multipart/form-data">
             <div>
                 <input type="text" class="publicar-textarea" placeholder="Describe tu obra..." name="descripcion">
             </div>
@@ -29,9 +31,17 @@ require 'handlers/publicarObra.php';
             </div>
         </form>
     </div>
-    <div class="contenedor-obras-publicadas">
-        <div class="obras-publicadas">
-            <p>prueba prueba prueba</p>
-        </div>
+    <div class="contenedor-grid">
+
+        <?php
+        $obra_detalles = mysqli_query($con, "SELECT * FROM obras WHERE username='$username'");
+        while($obra = mysqli_fetch_array($obra_detalles)){
+            echo " <div class='contenedor-contenido-2'>
+                    <img src=".$obra['contenido']." style='position:relative; margin:10px auto; width:200px; height:200px;'/>
+                    <p>".$obra['descripcion']."</p>
+            </div> ";
+        }
+        ?>
     </div>
 </div>
+
