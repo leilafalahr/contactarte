@@ -15,7 +15,7 @@ if (isset($_SESSION['username'])) {
     $checkEsArtista = mysqli_query($con, "SELECT tipo_de_usuario FROM usuarios where tipo_de_usuario=0 AND username='$usuario_loggeado'");
     $consultaCheckArtista = mysqli_num_rows($checkEsArtista);
 } else {
-    header('Location: registro.php');
+    header('Location: iniciar-sesion.php');
 }
 ?>
 <!doctype html>
@@ -33,14 +33,11 @@ if (isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!--bootstrap links-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- Image and text -->
+
 <nav class="navbar navbar-expand-sm" id="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -49,12 +46,40 @@ if (isset($_SESSION['username'])) {
                      alt="logo-contactarte">
             </a>
         </div>
-        <a class="navbar-brand" href="perfil.php" >
-            <img src="<?= $artista['imagen_perfil'] ?>" alt="foto_perfil" style="width:40px;height: 40px;"
-                 class="rounded-pill">
-        </a>
-        <a class="navbar-brand" href="perfil.php" style="display: none">
-            <img src="<?= $reclutador['imagen_perfil'] ?>" alt="foto_perfil" style="width:40px;height: 40px;"
-                 class="rounded-pill">
-        </a>
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </form>
+
+        <div class="d-flex">
+
+            <div class="dropdown">
+                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fa fa-bars" style="font-size: 30px"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="handlers/logout.php">Cerrar sesión</a></li>
+                </ul>
+            </div>
+
+            <?php
+
+                if($consultaCheckArtista == 1){
+                    echo '<a class="navbar-brand" href="perfil.php">
+                <img src="'. $artista["imagen_perfil"] .'"alt="foto_perfil" style="width:40px;height: 40px;"
+                     class="rounded-pill">
+            </a> ';
+                }else{
+                    echo '<a class="navbar-brand" href="perfil.php">
+                <img src="'. $reclutador["imagen_perfil"] .'"alt="foto_perfil" style="width:40px;height: 40px;"
+                     class="rounded-pill">
+            </a> ';
+                }
+
+            ?>
+
+        </div>
+
 </nav>
