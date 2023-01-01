@@ -1,7 +1,7 @@
 <?php
 require 'config/configBD.php';
 
-if (isset($_POST['iniciarsesion'])){
+if (isset($_POST['sign-in'])){
 $emailLog = filter_var($_POST['emailLog'],FILTER_SANITIZE_EMAIL);
 $_SESSION['emailLog'] = $emailLog;
 

@@ -2,7 +2,7 @@
 require 'config/configBD.php';
 $error_array=array();
 
-if (isset($_POST['registrar'])) {
+if (isset($_POST['sign-up'])) {
 
     //recibir los datos del post
     $nombre = filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
