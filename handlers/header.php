@@ -67,12 +67,12 @@ if (isset($_SESSION['username'])) {
             <?php
 
                 if($consultaCheckArtista == 1){
-                    echo '<a class="navbar-brand" href="perfil.php">
+                    echo '<a class="navbar-brand" href="mi-perfil.php">
                 <img src="'. $artista["imagen_perfil"] .'"alt="foto_perfil" style="width:40px;height: 40px;"
                      class="rounded-pill">
             </a> ';
                 }else{
-                    echo '<a class="navbar-brand" href="perfil.php">
+                    echo '<a class="navbar-brand" href="mi-perfil.php">
                 <img src="'. $reclutador["imagen_perfil"] .'"alt="foto_perfil" style="width:40px;height: 40px;"
                      class="rounded-pill">
             </a> ';
