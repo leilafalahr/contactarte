@@ -1,7 +1,6 @@
-
-function iniciarSesion(){
-    setTimeout("location.href='iniciar-sesion.php'", 10000);
+function mostrarVentana(){
+    alert("Cuenta creada correctamente. Puedes iniciar sesión.");
 }
-function registrate(){
-    setTimeout("location.href='registro.php'",10000);
+function cuentaEliminada(){
+    alert("Cuenta eliminada correctamente.¡Hasta pronto!");
 }

@@ -74,4 +74,6 @@ if (isset($_POST['sign-up'])) {
     $_SESSION['email'] = "";
     $_SESSION['password'] = "";
 
+    header("location: iniciar-sesion.php");
+    exit();
 }//registrar

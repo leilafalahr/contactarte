@@ -8,6 +8,7 @@
     border-radius:1rem ;
 }
 .already-account{
+    clear: both;
     float: right;
 }
 .mensaje-error{
