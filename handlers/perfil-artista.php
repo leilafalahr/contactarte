@@ -28,10 +28,10 @@ require("publicar-obra.php");
                                         PUBLICAR
                                     </h1>
                                 </div>
-                                <form action="mi-perfil.php" method="post" enctype="multipart/form-data">
+                                <form action="mi-perfil.php" method="post">
                                     <div>
                                         <input type="text" class="publicar-textarea" placeholder="Escribe o describe tu obra..." name="descripcion">
-                                        <input class="form-control" type="file" id="formFileMultiple" style="width:max-content ">
+<!--                                        <input class="form-control" type="file" id="formFileMultiple" style="width:max-content ">-->
                                         <input type="submit" class="btn btn-dark btn-lg btn-block already-account" name="publicar" value="publicar">
                                     </div>
                                 </form>

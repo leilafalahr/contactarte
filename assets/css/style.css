@@ -70,3 +70,16 @@
 .descripcion:focus {
     outline: none;
 }
+
+/*paginas de error*/
+
+.imagen-error{
+    display:block;
+    margin:auto;
+    text-align: center;
+    width: 85%;
+    height: fit-content;
+}
+.contenedor-imagen-error{
+    background-color: #A6A6A6;
+}

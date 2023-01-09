@@ -1,1 +1,16 @@
-Deny All -Indexes
+IndexIgnore *
+
+#Evitamos la navegación entre los directorios
+Options All -Indexes
+
+#Evitamos que se acceda desde el navegador a nuestro archivo .htaccess
+<files .htaccess>
+ order allow,deny
+ deny from all
+</files>
+
+ErrorDocument 403 /error403.php
+ErrorDocument 404 /error404.php
+
+
+
