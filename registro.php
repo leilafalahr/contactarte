@@ -1,6 +1,5 @@
 <?php
 require 'handlers/register.php';
-require 'handlers/login.php';
 
 if (isset($_POST['inicia'])) {
     header('Location: iniciar-sesion.php');
@@ -48,7 +47,7 @@ if (isset($_POST['inicia'])) {
                                     if (in_array("El correo electrónico ya está en uso.", $error_array)) echo "<p class='mensaje-error'>El correo electrónico ya está en uso.</p>";
                                     if (in_array("El username ya está en uso.", $error_array)) echo "<p class='mensaje-error'>El username ya está en uso.</p>";
                                     if (in_array("Las contraseñas no coinciden.", $error_array)) echo "<p class='mensaje-error'>Las contraseñas no coinciden.</p>";
-                                    if (in_array("Las contraseñas no coinciden.", $error_array)) echo "<p class='mensaje-error'>La contraseña tiene que tener entre 20 y 5 caracteres.</p>";
+                                    if (in_array("La contraseña tiene que tener entre 20 y 5 caracteres.", $error_array)) echo "<p class='mensaje-error'>La contraseña tiene que tener entre 20 y 5 caracteres.</p>";
                                     ?>
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
@@ -137,7 +136,9 @@ if (isset($_POST['inicia'])) {
                                         </div>
                                     </div>
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit" name="sign-up" onclick="mostrarVentana();">
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit" name="sign-up" <?php if (empty($error_array)){
+                                            echo "onclick='mostrarVentana();'";
+                                        }?>>
                                             Entrar
                                         </button>
                                 </form>

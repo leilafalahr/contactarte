@@ -11,7 +11,7 @@ $username = $reclutador['username'];
                         <h4 class="card-title"> <?=$usuario['nombre']." ".$usuario['apellido']?> (@<?= $reclutador['username']?>)</h4>
                         <span</span>
                         <p class="card-text"><?=$reclutador['bio']?></p>
-                        <a href="modificarPerfil.php" class="btn btn-dark btn-lg btn-block">Modificar perfil</a>
+                        <a href="modificar-perfil.php" class="btn btn-dark btn-lg btn-block">Modificar perfil</a>
                     </div>
                 </div>
             </div>

@@ -1,56 +1,132 @@
 <?php
-$error_array = "";
-$username = $artista['username'];
+require ("config/configBD.php");
 
-if(isset($_POST['guardar'])){
-    $nuevoUsername = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $bio = $_POST['bio'];
+$username = $usuario['username'];
 
-    //Verificar que el correo ya está en uso
-    $emailExiste = mysqli_query($con, "SELECT email from usuarios WHERE email='$email'");
-    $checkEmail = mysqli_num_rows($emailExiste);
-
-    if($checkEmail > 0) {
-        array_push($error_array,"El correo electrónico ya está en uso.");
-    }
-    //Verificar que el username ya está en uso
-    $usernameExiste = mysqli_query($con, "SELECT username from usuarios WHERE username='$username'");
-    $checkUsername = mysqli_num_rows($usernameExiste);
-
-    if($checkUsername > 0) {
-        array_push($error_array,"El username ya está en uso.");
-    }
-
-    //Verificar que la contraseña tiene entre 20 y 5 caracteres
-    if(strlen($password)>20 OR strlen($password<5)){
-        array_push($error_array, "La contraseña tiene que tener entre 20 y 5 caracteres.");
-    }
-    //encriptar contraseña antes de enviarla a la BD
-    if(empty($error_array)) {
-        $password = md5($password);
-    }
-
-    if($email != "" OR $email != null){
-        mysqli_query($con,"UPDATE usuarios SET email='$email' WHERE username='$username' ON CASCADE");
-    }
-    if($password != "" OR $password != null){
-        mysqli_query($con,"UPDATE usuarios SET password='$password' WHERE username='$username' ON CASCADE");
-    }
-    if($bio != "" OR $bio != null){
-        mysqli_query($con,"UPDATE artistas SET bio='$bio' WHERE username='$username'");
-    }
-    header("location: mi-perfil.php");
-    exit();
-}
 
 if(isset($_POST['salir'])){
     header("location: mi-perfil.php");
     exit();
 }
 
-if(isset($_POST['eliminar-cuenta'])){
-    mysqli_query($con,"DELETE FROM usuarios WHERE username='$username'");
-    header("Location: iniciar-sesion.php");
+if(isset($_POST['guardar-artista'])){
+    //Recibimos los datos que se obtienen del formulario
+    $nuevoUsername = $_POST['username-mod'];
+    $email = $_POST['email-mod'];
+    $password = $_POST['password-mod'];
+    $bio = $_POST['bio-mod'];
+
+    //Si los datos recibidos están vacíos, se mantienen los valores anteriores
+    if ($nuevoUsername == '' OR empty($nuevoUsername) OR $nuevoUsername==null){
+        $nuevoUsername=$username;
+    }
+    if ($email == '' OR empty($email) OR $email==null){
+        $email=$usuario['email'];
+    }
+    if ($password == '' OR empty($password) OR $password==null){
+        $password=$usuario['$password'];
+    }
+    if ($bio == '' OR empty($bio) OR $bio==null){
+        $bio=$artista['bio'];
+    }
+
+
+    //Encripta la contraseña
+    $password = md5($password);
+    if (empty($error_array)){
+        //Queries para editar las tablas
+        mysqli_query($con,"UPDATE usuarios SET email='$email',password='$password'WHERE username='$username'");
+        mysqli_query($con,"UPDATE artistas SET bio='$bio' WHERE username='$username'");
+        //Quitamos la protección de las claves foráneas
+        mysqli_query($con, "SET FOREIGN_KEY_CHECKS=0");
+        mysqli_query($con,"UPDATE usuarios SET username='$nuevoUsername' WHERE username='$username'");
+        mysqli_query($con,"UPDATE artistas SET username='$nuevoUsername' WHERE username='$username'");
+        //Volvemos a darle protección de las claves foráneas
+        mysqli_query($con, "SET FOREIGN_KEY_CHECKS=1");
+
+        //Editamos en la tabla obras el username
+        mysqli_query($con,"UPDATE obras SET username='$nuevoUsername' WHERE username='$username'");
+
+        //Actualizamos la variable de sesión
+        $_SESSION['username'] = $nuevoUsername;
+        $_SESSION['password'] = $password;
+        $_SESSION['email'] = $email;
+
+
+        //Volvemos a mi perfil
+        header("Location: mi-perfil.php");
+        exit();
+    }
 }
+
+if(isset($_POST['guardar-reclutador'])){
+    //Recibimos los datos que se obtienen del formulario
+    $nuevoUsername = $_POST['username-mod'];
+    $email = $_POST['email-mod'];
+    $password = $_POST['password-mod'];
+    $descripcion = $_POST['$descripcion-mod'];
+    $num = $_POST['numtelefono-mod'];
+
+
+    //Si los datos recibidos están vacíos, se mantienen los valores anteriores
+    if ($nuevoUsername == '' OR empty($nuevoUsername) OR $nuevoUsername==null){
+        $nuevoUsername=$username;
+    }
+    if ($email == '' OR empty($email) OR $email==null){
+        $email=$usuario['email'];
+    }
+    if ($password == '' OR empty($password) OR $password==null){
+        $password=$usuario['$password'];
+    }
+    if ($descripcion == '' OR empty($descripcion) OR $descripcion==null){
+        $descripcion=$reclutador['descripcion'];
+    }
+    if ($num == '' OR empty($num) OR $num==null){
+        $num=$reclutador['num_de_telefono'];
+    }
+
+    //Encripta la contraseña
+    $password = md5($password);
+
+    if (empty($error_array)){
+        //Queries para editar las tablas
+        mysqli_query($con,"UPDATE usuarios SET email='$email',password='$password'WHERE username='$username'");
+        mysqli_query($con,"UPDATE reclutadores SET descripcion='$descripcion',num_de_telefono='$num' WHERE username='$username'");
+        //Quitamos la protección de las claves foráneas
+        mysqli_query($con, "SET FOREIGN_KEY_CHECKS=0");
+        mysqli_query($con,"UPDATE usuarios SET username='$nuevoUsername' WHERE username='$username'");
+        mysqli_query($con,"UPDATE reclutadores SET username='$nuevoUsername' WHERE username='$username'");
+        //Volvemos a darle protección de las claves foráneas
+        mysqli_query($con, "SET FOREIGN_KEY_CHECKS=1");
+
+        //Actualizamos la variable de sesión
+        $_SESSION['username'] = $nuevoUsername;
+        $_SESSION['password'] = $password;
+        $_SESSION['email'] = $email;
+
+        //Volvemos a mi perfil
+        header("Location: mi-perfil.php");
+        exit();
+    }
+}
+
+//Eliminar las cuentas y por lo tanto, destruir la sesión activa.
+if(isset($_POST['eliminar-cuenta-artista'])){
+    mysqli_query($con, "SET FOREIGN_KEY_CHECKS=0");
+    mysqli_query($con,"DELETE FROM usuarios WHERE username='$username'");
+    mysqli_query($con,"DELETE FROM artistas WHERE username='$username'");
+    mysqli_query($con, "SET FOREIGN_KEY_CHECKS=1");
+    session_destroy();
+    header("Location: iniciar-sesion.php");
+    exit();
+}
+if(isset($_POST['eliminar-cuenta-reclutador'])){
+    mysqli_query($con, "SET FOREIGN_KEY_CHECKS=0");
+    mysqli_query($con,"DELETE FROM usuarios WHERE username='$username'");
+    mysqli_query($con,"DELETE FROM reclutadores WHERE username='$username'");
+    mysqli_query($con, "SET FOREIGN_KEY_CHECKS=1");
+    session_destroy();
+    header("Location: iniciar-sesion.php");
+    exit();
+}
+

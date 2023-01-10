@@ -1,18 +1,25 @@
 <?php
 require('handlers/header.php');
-$username = $artista['username'];
+$username = $_GET['username'];
+$imagen_perfil = $_GET['imagen_perfil'];
+$bio = $_GET['bio'];
+
+$nombre = $_GET['nombre'];
+$apellido = $_GET['apellido'];
+
+
 ?>
 
     <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xs-6 ">
                 <div class="card" id="card" style="width:300px">
-                    <img class="card-img-top" src="<?= $artista['imagen_perfil'] ?>" alt="imagen_perfil">
+                    <img class="card-img-top" src="<?= $imagen_perfil ?>" alt="imagen_perfil">
                     <div class="card-body">
-                        <h4 class="card-title"> <?= $usuario['nombre'] . " " . $usuario['apellido'] ?>
-                            (@<?= $artista['username'] ?>)</h4>
+                        <h4 class="card-title"> <?= $nombre . " " . $apellido?>
+                            (@<?= $username ?>)</h4>
                         <span</span>
-                        <p class="card-text"><?= $artista['bio'] ?></p>
+                        <p class="card-text"><?= $bio ?></p>
                     </div>
                 </div>
             </div>

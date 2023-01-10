@@ -2,6 +2,7 @@
 require 'handlers/register.php';
 require 'handlers/login.php';
 
+//Si le da al botón del registro, se redirige a la página registro.php
 if (isset($_POST['registrate'])) {
     header('Location: registro.php');
 }
@@ -25,7 +26,7 @@ if (isset($_POST['registrate'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <!--js y query links-->
+    <!--js links-->
     <script src="assets/js/function.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
@@ -45,8 +46,8 @@ if (isset($_POST['registrate'])) {
                                         <form method="post" action="iniciar-sesion.php" >
                                             <h2 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Iniciar sesión</h2>
                                             <?php
-                                            //mostrar errores
-                                            if(in_array("El email o la contraseña son incorrectos", $error_array)) echo  "<p class='mensaje-error'>El email o la contraseña son incorrectos.</p>";
+                                            //Si el correo o la contraseña son incorrectos, lo muestra
+                                            if(in_array("El email o la contraseña son incorrectos o no existen.", $error_array)) echo  "<p class='mensaje-error'>El email o la contraseña son incorrectos o no existen.</p>";
                                             ?>
                                             <div class="form-outline mb-4">
                                                 <input type="email" id="email" class="form-control form-control-lg" name="emailLog"/>

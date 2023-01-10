@@ -2,11 +2,15 @@
 require 'config/configBD.php';
 
 if (isset($_POST['sign-in'])){
+    //Recibimos los datos del formulario
 $emailLog = filter_var($_POST['emailLog'],FILTER_SANITIZE_EMAIL);
+    //Abrimos una variable de sesión con el email insertado.
 $_SESSION['emailLog'] = $emailLog;
 
+    //Encriptamos la contraseña para que coincida con la que está en la BD
 $passwordLog = md5($_POST['passwordLog']);
 
+    //Consultamos que se encuentra en la BD
 $check_bd = mysqli_query($con, "SELECT * from usuarios WHERE email='$emailLog' AND password='$passwordLog'");
 $check_login = mysqli_num_rows($check_bd);
 
@@ -39,8 +43,8 @@ $check_login = mysqli_num_rows($check_bd);
             header("Location: index.php");
             exit();
         }
-    }else{
-        array_push($error_array, "El email o la contraseña son incorrectos");
+    }else{ //
+        array_push($error_array, "El email o la contraseña son incorrectos o no existen.");
     }
 
 

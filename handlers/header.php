@@ -1,6 +1,9 @@
 <?php
 require 'config/configBD.php';
 if (isset($_SESSION['username'])) {
+    //Si el usuario está loggeado puede acceder, si no, se redirige a la página de inicio de sesión.
+    //Abrimos variable de sesión
+
     $usuario_loggeado = $_SESSION['username'];
 
     $usuario_detalles = mysqli_query($con, "SELECT * FROM usuarios WHERE username='$usuario_loggeado'");
@@ -14,6 +17,7 @@ if (isset($_SESSION['username'])) {
 
     $checkEsArtista = mysqli_query($con, "SELECT tipo_de_usuario FROM usuarios where tipo_de_usuario=0 AND username='$usuario_loggeado'");
     $consultaCheckArtista = mysqli_num_rows($checkEsArtista);
+
 } else {
     header('Location: iniciar-sesion.php');
 }
@@ -49,11 +53,16 @@ if (isset($_SESSION['username'])) {
             </a>
         </div>
 
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+        <?php
+        if($consultaCheckArtista == 0){
+            echo '<form class="d-flex" method="get" action="index.php">
+            <input class="form-control me-2" type="search" placeholder="Buscar..." name="busqueda" aria-label="Search">
+            <button class="btn" type="submit" name="buscar"><i class="fa fa-search" aria-hidden="true"></i>
             </button>
-        </form>
+            </form> ';
+        }
+        ?>
+
 
         <div class="d-flex">
 

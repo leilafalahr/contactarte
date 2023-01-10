@@ -1,3 +1,6 @@
+<?php
+require ('modificar.php');
+?>
 <div class="container-fluid mt-3">
     <div class="row">
         <div class="col-md-3 col-lg-3 col-xs-6 ">
@@ -8,7 +11,6 @@
                         (@<?= $artista['username'] ?>)</h4>
                     <span</span>
                     <p class="card-text"><?= $artista['bio'] ?></p>
-                    <a href="modificarPerfil.php" class="btn btn-dark btn-lg btn-block">Modificar perfil</a>
                 </div>
             </div>
         </div>
@@ -24,30 +26,30 @@
                     <input class="form-control" type="text" placeholder="<?= $usuario['apellido'] ?>"
                            aria-label="Disabled input example" disabled>
                 </div>
-                <form action="modificarPerfil.php" method="post">
+                <form action="modificar-perfil.php" method="post">
                 <div class="mb-3" id="modificar-perfil">
                     <label for="username" class="form-label">Username</label>
-                    <input type="username" class="form-control" id="username" name="username"
+                    <input type="username" class="form-control" id="username" name="username-mod"
                            placeholder="@<?= $usuario['username'] ?>">
                 </div>
                 <div class="mb-3" id="modificar-perfil">
                     <label for="email" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email" name="email"
+                    <input type="email" class="form-control" id="email" name="email-mod"
                            placeholder="<?= $usuario['email'] ?>">
                 </div>
                 <div class="mb-3" id="modificar-perfil">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="********">
+                    <input type="password" class="form-control" id="password" name="password-mod" placeholder="********">
                 </div>
                 <div class="mb-3" id="modificar-perfil">
                     <label for="bio" class="form-label">Biografía</label>
                     <textarea class="form-control" id="bio" rows="3"
-                              placeholder="<?= $artista['bio'] ?>" name="bio"></textarea>
+                              placeholder="<?= $artista['bio'] ?>" name="bio-mod"></textarea>
                 </div>
                 <center>
-                    <button type="submit" class="btn btn-primary btn-dark" name="guardar">Guardar y volver</button>
+                    <button type="submit" class="btn btn-primary btn-dark" name="guardar-artista">Guardar y volver</button>
                     <button type="submit" class="btn btn-secondary btn-dark" name="salir">Salir sin guardar</button>
-                    <button type="submit" class="btn btn-secondary btn-dark" name="eliminar-cuenta" onclick="cuentaEliminada()">Eliminar cuenta</button>
+                    <button type="submit" class="btn btn-secondary btn-dark" name="eliminar-cuenta-artista" onclick="cuentaEliminada()">Eliminar cuenta</button>
                 </center>
                 </form>
             </div>

@@ -1,3 +1,4 @@
+/*Registro e inicio de sesión*/
 .container-total{
     background-color: whitesmoke;
 }
@@ -14,14 +15,16 @@
 .mensaje-error{
     color: darkred;
 }
+/*header*/
 #navbar{
     background-color: #A6A6A6;
 }
+/**/
 #card{
     background-color: whitesmoke;
     padding: 10px;
 }
-/*perfil-artista*/
+/*perfil-artista.php*/
 .card-post, .card-feed-perfil{
     padding: 12px;
     margin-bottom: 10px;
@@ -37,19 +40,11 @@
     column-gap: 0.5em;
     margin: 10px;
 }
-/*index reclutador*/
-#perfiles{
-    max-width: 540px;
-    margin-top: 10px;
-}
+#eliminar{
+    border: none;
+    background-color: whitesmoke;
 
-/*modificar perfil*/
-#modificar-perfil{
-    padding-left: 10%;
-    padding-right: 10%;
 }
-/*perfil artista*/
-
 .publicar-header{
     padding: .2em .5em;
     background-color: #eaeaea;
@@ -71,8 +66,19 @@
     outline: none;
 }
 
-/*paginas de error*/
+/*index-reclutador.php*/
+#perfiles{
+    max-width: 540px;
+    margin-top: 10px;
+}
 
+/*modificar-perfil.php*/
+#modificar-perfil{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+/*Páginas de error*/
 .imagen-error{
     display:block;
     margin:auto;

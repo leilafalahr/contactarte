@@ -1,6 +1,11 @@
 <?php
 $username = $artista['username'];
 require("publicar-obra.php");
+
+if (isset($_POST['eliminar-publicacion'])){
+    $descripcion = $_POST['descripcion'];
+    mysqli_query($con,"DELETE FROM obras WHERE descripcion='$descripcion'");
+}
 ?>
 
     <div class="container-fluid mt-3">
@@ -13,7 +18,7 @@ require("publicar-obra.php");
                             (@<?= $username ?>)</h4>
                         <span</span>
                         <p class="card-text"><?= $artista['bio'] ?></p>
-                        <a href="modificarPerfil.php" class="btn btn-dark btn-lg btn-block">Modificar perfil</a>
+                        <a href="modificar-perfil.php" class="btn btn-dark btn-lg btn-block">Modificar perfil</a>
                     </div>
                 </div>
             </div>
@@ -28,17 +33,18 @@ require("publicar-obra.php");
                                         PUBLICAR
                                     </h1>
                                 </div>
-                                <form action="mi-perfil.php" method="post">
+                                <?php
+                                if(in_array("La publicación no puede estar vacía.", $error_array)) echo  "<p class='mensaje-error'>La publicación no puede estar vacía.</p>";
+                                ?>
+                                <form action="mi-perfil.php" method="post" enctype="multipart/form-data">
                                     <div>
                                         <input type="text" class="publicar-textarea" placeholder="Escribe o describe tu obra..." name="descripcion">
-<!--                                        <input class="form-control" type="file" id="formFileMultiple" style="width:max-content ">-->
+                                        <input class="form-control" type="file" name="imagen" style="width:max-content ">
                                         <input type="submit" class="btn btn-dark btn-lg btn-block already-account" name="publicar" value="publicar">
                                     </div>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                     <div class="card card-feed-perfil">
                         <div class="gallery">
@@ -47,8 +53,12 @@ require("publicar-obra.php");
                             while ($obra = mysqli_fetch_array($obra_detalles)) {
                                 echo '
                               <div class="card" id="feed-perfil">
-                                <div class="card-header">
-                                 <h6>' . $obra['fecha_publicacion'] . '</h6>
+                                <div class="card-header clearfix">
+                                 <form action="mi-perfil.php" method="post">
+                                 <input type="hidden" name="descripcion" value="' . $obra['descripcion'] . '">
+                                 <button class="float-end" type="submit" name="eliminar-publicacion" id="eliminar"><i class="fas fa-window-close" style="font-size:20px;color:red"></i></button></form>
+                                 <h6 class="float-start">' . $obra['fecha_publicacion'] . '
+                                   </h6 >
                                 </div>
                                 <img class="card-img-top" src="' . $obra['contenido'] . '">
                                 <div class="card-body">
